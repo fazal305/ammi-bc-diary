@@ -1,0 +1,11 @@
+name: Feature idea
+description: Suggest an improvement to the diary.
+labels: [enhancement]
+body:
+  - type: textarea
+    id: idea
+    attributes:
+      label: Idea
+      description: What would you like to see, and how would it help the person running the committee?
+    validations:
+      required: true
