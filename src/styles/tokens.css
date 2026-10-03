@@ -1,0 +1,43 @@
+:root {
+  /* Diary paper and ink */
+  --paper: #fff8f8;
+  --paper-deep: #fbeaea;
+  --card: #ffffff;
+  --ink: #2e1524;
+  --ink-soft: #5e4453;
+  --rule: #ecd3d8;
+
+  /* Actions */
+  --plum: #6b2d5c;
+  --plum-deep: #521f46;
+  --marigold: #f2a900;
+  --marigold-deep: #d18f00;
+  --marigold-ink: #2b1600;
+  --wa: #0f7a3d;
+  --wa-deep: #0a5c2d;
+
+  /* Payment status, per the SRS */
+  --paid: #2ecc71;
+  --paid-ink: #08311a;
+  --unpaid: #e74c3c;
+  --unpaid-ink: #ffffff;
+
+  --danger: #b3261e;
+  --warn-bg: #fff1c7;
+  --warn-ink: #4a3300;
+  --focus: #1b4fbf;
+
+  --font-display: 'Noto Nastaliq Urdu', 'Jameel Noori Nastaleeq', serif;
+  --font-body: 'Noto Naskh Arabic Variable', 'Noto Naskh Arabic', 'Segoe UI', Tahoma, sans-serif;
+
+  --text: 1.5rem; /* 24px */
+  --text-lg: 1.75rem; /* 28px */
+  --text-xl: 2rem; /* 32px */
+  --text-sm: 1.25rem; /* 20px, secondary info only */
+
+  --radius: 20px;
+  --radius-sm: 14px;
+  --shadow: 0 2px 0 rgba(46, 21, 36, 0.08), 0 8px 24px rgba(46, 21, 36, 0.08);
+  --tap: 64px;
+  --gutter: 16px;
+}
