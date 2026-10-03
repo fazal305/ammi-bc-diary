@@ -1,6 +1,6 @@
 # امی کی بی سی ڈائری · Ammi Ki BC Diary
 
-### [▶ Open the live app](https://fazal305.github.io/ammi-bc-diary/)
+### [▶ Open the live app](https://ammi-bc-diary.vercel.app/)
 
 A simple, Urdu-first web app for running a family committee (BC, *committee*):
 the savings circle where every member pays in each month and one member,
@@ -8,7 +8,7 @@ picked by draw, takes the whole pot. It replaces the paper diary, the crossed-ou
 lines and the "who has paid?" WhatsApp threads with three big buttons, designed
 first of all for mothers and older users.
 
-**Live app:** [fazal305.github.io/ammi-bc-diary](https://fazal305.github.io/ammi-bc-diary/)
+**Live app:** [ammi-bc-diary.vercel.app](https://ammi-bc-diary.vercel.app/)
 
 <p>
   <img src="docs/screenshots/home.png" alt="Home screen with three large buttons: committee members, draw, and WhatsApp group" width="240">
@@ -56,7 +56,7 @@ app's own «آپ کا ڈیٹا» screen explains this in Urdu.
 - Plain CSS with custom properties, no CSS framework
 - Self-hosted fonts via Fontsource: Noto Nastaliq Urdu for headings and Noto
   Naskh Arabic for body text
-- Hash routing (no server rewrites needed on GitHub Pages)
+- Hash routing (no server rewrites needed)
 - A small hand-written service worker; the build injects the hashed asset list
 - Vitest for the data and helper tests, and oxlint for linting
 
@@ -99,9 +99,11 @@ public/sw.js            offline cache (asset list injected at build time)
 
 ## Deployment
 
-Pushing to `main` runs `.github/workflows/deploy.yml`, which tests, builds and
-publishes `dist/` to GitHub Pages. The build uses a relative base, so it also
-works from a domain root.
+The live app is hosted on Vercel and redeploys from `main`. `vercel.json` sets
+the security headers (CSP, `X-Content-Type-Options`, `Referrer-Policy`,
+`frame-ancestors`) and keeps `sw.js` and `index.html` uncached so updates reach
+phones quickly. CI (`.github/workflows/ci.yml`) runs lint, tests and the build
+on every push and pull request.
 
 ## License
 
