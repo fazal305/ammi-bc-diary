@@ -53,7 +53,9 @@ export default function DrawScreen({ diary, dispatch, online }) {
   const [revealed, setRevealed] = useState(null)
   const [confirmRound, setConfirmRound] = useState(false)
   const eligible = eligibleMembers(diary)
-  const roundDraws = currentRoundDraws(diary)
+  const allRoundDraws = currentRoundDraws(diary)
+  // The draw is saved before the roll starts; keep it out of the history until the reveal.
+  const roundDraws = rolling ? allRoundDraws.slice(0, -1) : allRoundDraws
   const pastDraws = diary.draws.filter((d) => d.round !== diary.round)
 
   function draw() {

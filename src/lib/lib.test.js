@@ -48,6 +48,8 @@ describe('whatsapp', () => {
 
   it('accepts only real group invite links', () => {
     expect(isValidGroupLink('https://chat.whatsapp.com/AbCdEf1234567890XyZ')).toBe(true)
+    expect(isValidGroupLink('https://chat.whatsapp.com/AbCdEf1234567890XyZ?mode=ems_copy_t')).toBe(true)
+    expect(isValidGroupLink('https://chat.whatsapp.com/AbCdEf1234567890XyZ?x="><')).toBe(false)
     expect(isValidGroupLink('javascript:alert(1)')).toBe(false)
     expect(isValidGroupLink('https://evil.com/chat.whatsapp.com/abc')).toBe(false)
   })

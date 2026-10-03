@@ -1,6 +1,6 @@
 import { toInternational } from './phone.js'
 
-export const GROUP_LINK_PATTERN = /^https:\/\/chat\.whatsapp\.com\/[A-Za-z0-9]{10,40}\/?$/
+export const GROUP_LINK_PATTERN = /^https:\/\/chat\.whatsapp\.com\/[A-Za-z0-9]{10,40}\/?(?:\?[\w=&.-]{0,80})?$/
 
 export function isValidGroupLink(value) {
   return GROUP_LINK_PATTERN.test(value.trim())
