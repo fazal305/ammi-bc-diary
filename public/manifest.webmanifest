@@ -1,0 +1,17 @@
+{
+  "name": "امی کی بی سی ڈائری",
+  "short_name": "بی سی ڈائری",
+  "description": "کمیٹی کے ممبران، پیسوں کا حساب، سب کے سامنے پرچی اور واٹس ایپ پیغام۔",
+  "lang": "ur",
+  "dir": "rtl",
+  "start_url": "./",
+  "scope": "./",
+  "display": "standalone",
+  "background_color": "#fff8f8",
+  "theme_color": "#fff8f8",
+  "icons": [
+    { "src": "favicon.svg", "sizes": "any", "type": "image/svg+xml" },
+    { "src": "icon-192.png", "sizes": "192x192", "type": "image/png" },
+    { "src": "icon-512.png", "sizes": "512x512", "type": "image/png", "purpose": "any maskable" }
+  ]
+}

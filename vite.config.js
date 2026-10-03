@@ -1,5 +1,8 @@
 import react from '@vitejs/plugin-react'
 import { defineConfig } from 'vite'
+import { createHash } from 'node:crypto'
+import fs from 'node:fs'
+import path from 'node:path'
 
 // GitHub Pages cannot send response headers, so the production build carries
 // its policy in meta tags instead. Dev is left alone because Vite's HMR
@@ -27,9 +30,29 @@ const securityMeta = {
   ],
 }
 
+// Hashed asset names are only known after bundling, so the service worker's
+// precache list and cache version are written into dist/sw.js here. The .woff
+// fallbacks are skipped: every browser that runs service workers takes woff2.
+const swPrecache = {
+  name: 'sw-precache',
+  apply: 'build',
+  writeBundle(options, bundle) {
+    const files = Object.keys(bundle)
+      .filter((f) => f !== 'index.html' && !f.endsWith('.woff'))
+      .sort()
+      .map((f) => `./${f}`)
+    const version = createHash('sha256').update(files.join()).digest('hex').slice(0, 10)
+    const swPath = path.join(options.dir, 'sw.js')
+    const source = fs.readFileSync(swPath, 'utf8')
+    const marker = "const BUILD = { version: 'dev', files: [] }"
+    if (!source.includes(marker)) throw new Error('sw-precache: BUILD marker missing from sw.js')
+    fs.writeFileSync(swPath, source.replace(marker, `const BUILD = ${JSON.stringify({ version, files })}`))
+  },
+}
+
 // Relative base so the build works on a domain root and under GitHub Pages'
 // /ammi-bc-diary/ sub-path.
 export default defineConfig({
   base: './',
-  plugins: [react(), securityMeta],
+  plugins: [react(), securityMeta, swPrecache],
 })
